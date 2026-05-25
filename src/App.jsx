@@ -40,7 +40,7 @@ export default function ForestProjection() {
   // ===== Sequoia growth & carbon data =====
   // Source: TGR Sequoia Carbon Code Forecast Model (2024)
   // 500 years of measured/projected per-tree data: age, height (m),
-  // diameter (m), per-tree CO2 capture (tonnes — includes AGB + roots).
+  // diameter (m), per-tree CO2 capture (tonnes - includes AGB + roots).
   // Height plateaus at ~62.94m from year 144 onwards (species ceiling for
   // the model's well-managed Welsh growth assumptions).
   // Tuple format: [age, height_m, diameter_m, co2_tonnes]
@@ -582,7 +582,7 @@ export default function ForestProjection() {
     const display = tCO2 < 1 ? tCO2.toFixed(2) : tCO2 < 10 ? tCO2.toFixed(1) : Math.round(tCO2).toLocaleString();
     const cars = Math.round(tCO2 / 4.6);
     let equivalence;
-    if (tCO2 < 0.5) equivalence = "The early years — most of your tree's carbon work is still ahead";
+    if (tCO2 < 0.5) equivalence = "The early years - most of your tree's carbon work is still ahead";
     else if (tCO2 < 2) equivalence = "About one car driven for several months";
     else if (tCO2 < 5) equivalence = "About one car's annual emissions";
     else equivalence = `Equivalent to taking ${cars.toLocaleString()} car${cars === 1 ? '' : 's'} off the road for a year`;
@@ -591,12 +591,12 @@ export default function ForestProjection() {
   };
 
   const getForestState = (age) => {
-    if (age <= 5) return "The native canopy is establishing — oak, rowan, silver birch, and cherry are putting down their first roots alongside the young Sequoia. Scots Pine and Norway Spruce shelter it from Welsh wind.";
+    if (age <= 5) return "The native canopy is establishing - oak, rowan, silver birch, and cherry are putting down their first roots alongside the young Sequoia. Scots Pine and Norway Spruce shelter it from Welsh wind.";
     if (age <= 15) return "The forest is finding its shape. Native species are knee-to-shoulder height. The nurse crops are doing their job, shielding the young Sequoia and shaping its growth.";
     if (age <= 40) return "The forest reads as a forest now. The native species are mature. The Sequoia has begun its long climb above them. The first nurse crops have been gradually managed out.";
-    if (age <= 100) return "The Sequoia is now visible from a distance — taller than the surrounding canopy. The native woodland beneath is a complete, biodiverse ecosystem. The nurses are gone; the forest stands as it was designed to.";
+    if (age <= 100) return "The Sequoia is now visible from a distance - taller than the surrounding canopy. The native woodland beneath is a complete, biodiverse ecosystem. The nurses are gone; the forest stands as it was designed to.";
     if (age <= 300) return "The Sequoia is one of the tallest trees in Wales. Generations of birds have nested in it. The native woodland around it has cycled through several generations of its own.";
-    return "The Sequoia is among the oldest living things in Britain — still growing, still capturing carbon. The forest below has self-renewed many times. The tree itself shows no sign of aging in the way other trees do.";
+    return "The Sequoia is among the oldest living things in Britain - still growing, still capturing carbon. The forest below has self-renewed many times. The tree itself shows no sign of aging in the way other trees do.";
   };
 
   // Plausible coordinates within Abergavenny Grove (Monmouthshire, Wales)
@@ -653,7 +653,7 @@ export default function ForestProjection() {
       const html2canvas = window.html2canvas;
       const jsPDFLib = window.jspdf?.jsPDF;
       if (!html2canvas || !jsPDFLib) {
-        // Libs not yet loaded — fall back to print
+        // Libs not yet loaded - fall back to print
         window.print();
         return;
       }
@@ -766,7 +766,7 @@ export default function ForestProjection() {
         {/* Ground line */}
         <line x1="20" y1={groundY} x2={SVG_W - 20} y2={groundY} stroke="#D4CDB8" strokeWidth="0.5" />
 
-        {/* TREE — render proper structure if there's enough size to see it,
+        {/* TREE - render proper structure if there's enough size to see it,
             otherwise just a small mark */}
         {heightPx >= 4 && (
           <>
@@ -804,7 +804,7 @@ export default function ForestProjection() {
           </>
         )}
 
-        {/* Tiny sapling — single mark instead of a structured shape */}
+        {/* Tiny sapling - single mark instead of a structured shape */}
         {heightPx < 4 && (
           <line
             x1={treeX}
@@ -817,7 +817,7 @@ export default function ForestProjection() {
           />
         )}
 
-        {/* HUMAN — true-to-scale 1.7m stick figure */}
+        {/* HUMAN - true-to-scale 1.7m stick figure */}
         {showHuman && (() => {
           const humanX = treeX + Math.max(45, canopyBaseHalf + trunkWidthPx / 2 + 25);
           const h = humanHeightPx;
@@ -887,7 +887,7 @@ export default function ForestProjection() {
         <div className="min-h-screen flex flex-col bg-white">
           <header className="px-8 md:px-14 pt-8 flex justify-between items-center text-xs tracking-[0.28em] uppercase no-print">
             <span className="font-semibold" style={{ color: '#1B3128' }}>The Great Reserve</span>
-            <span style={{ color: '#7C8C7E' }}>A field instrument · Beta</span>
+            <span style={{ color: '#7C8C7E' }}>A field instrument </span>
           </header>
 
           <div className="flex-1 flex items-start px-8 md:px-14 py-12 md:py-16 relative overflow-hidden">
@@ -949,7 +949,7 @@ export default function ForestProjection() {
                 }}
               >
                 See the tree<br />
-                you would plant —<br />
+                you would plant -<br />
                 <em style={{ color: '#B05432', fontWeight: 400 }}>in the year that matters most.</em>
               </h1>
               <p
@@ -963,7 +963,7 @@ export default function ForestProjection() {
                   animationDelay: '0.4s'
                 }}
               >
-                A Giant Sequoia planted in our Abergavenny Grove this April will live for 3,000 years. We'll show you how tall yours could be — and how much carbon it will have stored — at any point in its life.
+                A Giant Sequoia planted in our Groves could live for 1,000+ years. We'll show you how tall yours could be - and how much carbon it will have stored - at any point in its life.
               </p>
               <button
                 onClick={() => setStep('name')}
@@ -1118,7 +1118,7 @@ export default function ForestProjection() {
                 {[
                   { id: 'milestone', icon: Heart, title: "A loved one's milestone", sub: "The year my child turns 50, my parent turns 80, my partner turns 70…" },
                   { id: 'future', icon: Calendar, title: "A round future year", sub: "2226. 2326. 2426. 2526. The kind of date we don't usually let ourselves picture." },
-                  { id: 'lifespan', icon: Heart, title: "The year I'd turn 100", sub: "If you lived to a hundred — what would your forest look like then?" }
+                  { id: 'lifespan', icon: Heart, title: "The year I'd turn 100", sub: "If you lived to a hundred - what would your forest look like then?" }
                 ].map((opt) => {
                   const Icon = opt.icon;
                   return (
@@ -1462,7 +1462,7 @@ export default function ForestProjection() {
 
           <div className="max-w-5xl mx-auto px-6 md:px-14 pt-10">
 
-            {/* Hero — emotional headline */}
+            {/* Hero - emotional headline */}
             <div className="anim-fade mb-12" style={{ animationDelay: '0.1s' }}>
               <div className="text-xs tracking-[0.32em] uppercase font-semibold mb-5" style={{ color: '#B05432' }}>
                 Your projection · Abergavenny Grove
@@ -1493,7 +1493,7 @@ export default function ForestProjection() {
                   className="mt-5 text-lg max-w-2xl"
                   style={{ color: '#3A4A41', fontFamily: fontStack, fontStyle: 'italic', fontWeight: 400 }}
                 >
-                  The year you'd turn 100. Your tree will be {projection.tree.age_years} years old — and it will keep growing for at least 2,900 more.
+                  The year you'd turn 100. Your tree will be {projection.tree.age_years} years old - and it will keep growing for at least 2,900 more.
                 </p>
               )}
               {projection.framing === 'future' && (
@@ -1501,7 +1501,7 @@ export default function ForestProjection() {
                   className="mt-5 text-lg max-w-2xl"
                   style={{ color: '#3A4A41', fontFamily: fontStack, fontStyle: 'italic', fontWeight: 400 }}
                 >
-                  {projection.tree.age_years} years after planting. Sequoias do not plateau the way other trees do — your tree will still be growing, and still capturing carbon, for thousands of years beyond this.
+                  {projection.tree.age_years} years after planting. Sequoias do not plateau the way other trees do - your tree will still be growing, and still capturing carbon, for thousands of years beyond this.
                 </p>
               )}
             </div>
@@ -1581,7 +1581,7 @@ export default function ForestProjection() {
               </div>
             </div>
 
-            {/* CARBON BLOCK — featured */}
+            {/* CARBON BLOCK - featured */}
             <div
               className="anim-fade mb-10 p-8 md:p-10"
               style={{
@@ -1723,13 +1723,13 @@ export default function ForestProjection() {
                       lineHeight: '1.5'
                     }}
                   >
-                    We plant in April and October. Your sponsorship gives you a named, GPS-tagged Giant Sequoia in a native-led, mixed-species 1,000-year forest in Wales.
+                    We plant in April and October. Your sponsorship gives you a named, GPS-tagged Giant Sequoia in a native & mixed-species 1,000-year forest in Wales.
                   </p>
                 </div>
 
                 <div className="md:col-span-2 flex flex-col gap-3 justify-end">
                   <a
-                    href="https://thegreatreserve.us"
+                    href="https://thegreatreserve.us/products/sponsor-a-sequoia"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-3 px-8 py-5 transition-all hover:gap-5"
