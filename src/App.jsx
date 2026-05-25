@@ -887,10 +887,10 @@ export default function ForestProjection() {
         <div className="min-h-screen flex flex-col bg-white">
           <header className="px-8 md:px-14 pt-8 flex justify-between items-center text-xs tracking-[0.28em] uppercase no-print">
             <span className="font-semibold" style={{ color: '#1B3128' }}>The Great Reserve</span>
-            <span style={{ color: '#7C8C7E' }}>A field instrument</span>
+            <span style={{ color: '#7C8C7E' }}>A field instrument · Beta</span>
           </header>
 
-          <div className="flex-1 flex items-center px-8 md:px-14 py-12 relative overflow-hidden">
+          <div className="flex-1 flex items-start px-8 md:px-14 py-12 md:py-16 relative overflow-hidden">
             {/* Subtle ring decoration */}
             <div
               className="absolute pointer-events-none"
@@ -963,7 +963,7 @@ export default function ForestProjection() {
                   animationDelay: '0.4s'
                 }}
               >
-                A Giant Sequoia planted in our Abergavenny Grove could live for 1,000+ years. We'll show you how tall yours could be — and how much carbon it will have stored — at any point in its life.
+                A Giant Sequoia planted in our Abergavenny Grove this April will live for 3,000 years. We'll show you how tall yours could be — and how much carbon it will have stored — at any point in its life.
               </p>
               <button
                 onClick={() => setStep('name')}
@@ -1013,7 +1013,7 @@ export default function ForestProjection() {
             <span style={{ color: '#7C8C7E' }}>Step 1 of 3</span>
           </header>
 
-          <div className="flex-1 flex items-center justify-center px-8 md:px-14 py-16">
+          <div className="flex-1 flex items-start justify-center px-8 md:px-14 pt-8 md:pt-12 pb-16">
             <div className="max-w-2xl w-full anim-fade">
               <div className="text-xs tracking-[0.32em] uppercase font-semibold mb-6" style={{ color: '#B05432' }}>
                 A small introduction
@@ -1092,7 +1092,7 @@ export default function ForestProjection() {
             <span style={{ color: '#7C8C7E' }}>Step 2 of 3</span>
           </header>
 
-          <div className="flex-1 flex items-center justify-center px-8 md:px-14 py-12">
+          <div className="flex-1 flex items-start justify-center px-8 md:px-14 pt-8 md:pt-12 pb-12">
             <div className="max-w-3xl w-full anim-fade">
               <div className="text-xs tracking-[0.32em] uppercase font-semibold mb-5" style={{ color: '#B05432' }}>
                 Hello, {userName}
@@ -1180,7 +1180,7 @@ export default function ForestProjection() {
             <span style={{ color: '#7C8C7E' }}>Step 3 of 3</span>
           </header>
 
-          <div className="flex-1 flex items-center justify-center px-8 md:px-14 py-12">
+          <div className="flex-1 flex items-start justify-center px-8 md:px-14 pt-8 md:pt-12 pb-12">
             <div className="max-w-2xl w-full anim-fade">
               {framing === 'milestone' && (
                 <>
