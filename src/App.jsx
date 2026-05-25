@@ -887,7 +887,7 @@ export default function ForestProjection() {
         <div className="min-h-screen flex flex-col bg-white">
           <header className="px-8 md:px-14 pt-8 flex justify-between items-center text-xs tracking-[0.28em] uppercase no-print">
             <span className="font-semibold" style={{ color: '#1B3128' }}>The Great Reserve</span>
-            <span style={{ color: '#7C8C7E' }}>A field instrument · Beta</span>
+            <span style={{ color: '#7C8C7E' }}>A field instrument</span>
           </header>
 
           <div className="flex-1 flex items-center px-8 md:px-14 py-12 relative overflow-hidden">
@@ -963,7 +963,7 @@ export default function ForestProjection() {
                   animationDelay: '0.4s'
                 }}
               >
-                A Giant Sequoia planted in our Abergavenny Grove this April will live for 3,000 years. We'll show you how tall yours could be — and how much carbon it will have stored — at any point in its life.
+                A Giant Sequoia planted in our Abergavenny Grove could live for 1,000+ years. We'll show you how tall yours could be — and how much carbon it will have stored — at any point in its life.
               </p>
               <button
                 onClick={() => setStep('name')}
