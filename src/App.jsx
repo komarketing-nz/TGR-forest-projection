@@ -1493,7 +1493,7 @@ export default function ForestProjection() {
                   className="mt-5 text-lg max-w-2xl"
                   style={{ color: '#3A4A41', fontFamily: fontStack, fontStyle: 'italic', fontWeight: 400 }}
                 >
-                  The year you'd turn 100. Your tree will be {projection.tree.age_years} years old - and it will keep growing for at least 2,900 more.
+                  The year you'd turn 100. Your tree will be {projection.tree.age_years} years old - and it will keep growing for many more to come! Some Giant Sequoia's have reached the grand age of 3,000 in the Sierra Nevada!
                 </p>
               )}
               {projection.framing === 'future' && (
@@ -1644,7 +1644,7 @@ export default function ForestProjection() {
                       textTransform: 'uppercase'
                     }}
                   >
-                    Sequoias do not plateau. Your tree keeps storing carbon for another 2,900 years after this.
+                    Sequoias do not plateau. Some Giant Sequoia's have reached the grand age of 3,000 in the Sierra Nevada!
                   </p>
                 </div>
               </div>
