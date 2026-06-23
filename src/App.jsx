@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { ChevronRight, MapPin, Calendar, Heart, ArrowLeft, Wind, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronRight, MapPin, Calendar, Heart, ArrowLeft, Wind } from 'lucide-react';
 
 export default function ForestProjection() {
   const [step, setStep] = useState('intro');
@@ -18,24 +18,8 @@ export default function ForestProjection() {
   const [userCurrentAge, setUserCurrentAge] = useState('');
 
   const [projection, setProjection] = useState(null);
-  const [pdfLoading, setPdfLoading] = useState(false);
-  const printRef = useRef(null);
 
   const CURRENT_YEAR = 2026;
-
-  // Load PDF generation libraries from CDN (one-time, idempotent)
-  useEffect(() => {
-    const loadScript = (src) => new Promise((resolve, reject) => {
-      if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
-      const s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = reject;
-      document.head.appendChild(s);
-    });
-    loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js').catch(() => {});
-    loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js').catch(() => {});
-  }, []);
 
   // ===== Sequoia growth & carbon data =====
   // Source: TGR Sequoia Carbon Code Forecast Model (2024)
@@ -642,21 +626,6 @@ export default function ForestProjection() {
     setProjection(null);
   };
 
-  // ===== PDF download =====
-  // Captures the result view via html2canvas then composes a PDF with jsPDF.
-  // Both libs load from CDN (see useEffect above). Falls back to print dialog
-  // if either lib fails to load.
-  const handleDownloadPDF = async () => {
-    if (!projection || !printRef.current) return;
-    setPdfLoading(true);
-    try {
-      const html2canvas = window.html2canvas;
-      const jsPDFLib = window.jspdf?.jsPDF;
-      if (!html2canvas || !jsPDFLib) {
-        // Libs not yet loaded - fall back to print
-        window.print();
-        return;
-      }
 
       // Capture at 2x for retina-quality
       const canvas = await html2canvas(printRef.current, {
@@ -1448,7 +1417,7 @@ export default function ForestProjection() {
 
       {/* ===== STEP: RESULT ===== */}
       {step === 'result' && projection && (
-        <div className="min-h-screen pb-20 bg-white" ref={printRef}>
+        <div className="min-h-screen pb-20 bg-white">
           <header className="px-8 md:px-14 pt-8 flex justify-between items-center text-xs tracking-[0.28em] uppercase no-print">
             <span className="font-semibold" style={{ color: '#1B3128' }}>The Great Reserve</span>
             <button
