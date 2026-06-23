@@ -626,46 +626,6 @@ export default function ForestProjection() {
     setProjection(null);
   };
 
-
-      // Capture at 2x for retina-quality
-      const canvas = await html2canvas(printRef.current, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#FFFFFF',
-        logging: false,
-      });
-      const imgData = canvas.toDataURL('image/jpeg', 0.92);
-
-      // A4 portrait: 210mm × 297mm. Fit the captured image to width.
-      const pdf = new jsPDFLib({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-      const pdfWidth = 210;
-      const imgWidth = pdfWidth;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-      // If content taller than one page, split into multiple pages
-      const pageHeight = 297;
-      let heightLeft = imgHeight;
-      let position = 0;
-
-      pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
-
-      const filename = `${projection.subjectName}-Sequoia-${projection.targetYear}.pdf`.replace(/\s+/g, '_');
-      pdf.save(filename);
-    } catch (err) {
-      console.error('PDF generation failed, falling back to print:', err);
-      window.print();
-    } finally {
-      setPdfLoading(false);
-    }
-  };
-
   const canSubmit = () => {
     if (!userName.trim()) return false;
     if (framing === 'milestone') {
@@ -1716,26 +1676,6 @@ export default function ForestProjection() {
                   >
                     Sponsor your Sequoia <ChevronRight size={18} strokeWidth={2.5} />
                   </a>
-                  <button
-                    onClick={handleDownloadPDF}
-                    disabled={pdfLoading}
-                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-3 transition-all hover:bg-opacity-5 disabled:opacity-60 disabled:cursor-wait"
-                    style={{
-                      background: 'transparent',
-                      color: '#1B3128',
-                      border: '1px solid #1B3128',
-                      fontFamily: bodyFont,
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                      letterSpacing: '0.18em',
-                      textTransform: 'uppercase',
-                      borderRadius: '2px',
-                      cursor: pdfLoading ? 'wait' : 'pointer'
-                    }}
-                  >
-                    <Download size={14} strokeWidth={2} />
-                    {pdfLoading ? 'Preparing PDF…' : 'Download as PDF'}
-                  </button>
                 </div>
               </div>
             </div>
